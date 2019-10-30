@@ -1,5 +1,9 @@
 <?php
 
+use miolae\yii2\doc\Module as DocModule;
+use yii\debug\Module;
+use yii\log\FileTarget;
+
 $params = require __DIR__ . '/params.php';
 
 $config = [
@@ -15,13 +19,13 @@ $config = [
             'cookieValidationKey' => 'sCvztNOshoGFzcITt-7lPnYoVFJIyYDc',
         ],
         'cache'      => [
-            'class' => 'yii\caching\FileCache',
+            'class' => yii\caching\FileCache::class,
         ],
         'log'        => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets'    => [
                 [
-                    'class'  => 'yii\log\FileTarget',
+                    'class'  => FileTarget::class,
                     'levels' => ['error', 'warning'],
                 ],
             ],
@@ -29,11 +33,15 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName'  => false,
+            'rules'           => [
+                '/<page:\w+>' => 'doc/default/index',
+                '/'            => 'doc/default/index',
+            ],
         ],
     ],
     'modules'    => [
         'doc' => [
-            'class'      => 'miolae\yii2\doc\Module',
+            'class'      => DocModule::class,
             'rootDocDir' => '@app/docs',
             'cache'      => false,
         ],
@@ -45,7 +53,7 @@ if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
-        'class' => 'yii\debug\Module',
+        'class' => Module::class,
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
     ];

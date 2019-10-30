@@ -23,7 +23,7 @@ help: ## Show help
 
 build: ## Build an image for app service and tag it within the branch name
 	@echo "Building image for $(CI_COMMIT_REF_SLUG)"
-	@docker build --pull -t $(CONTAINER_NAMESPACE)/app:$(CI_COMMIT_REF_SLUG) -f .docker/php56/Dockerfile ./
+	@docker build --pull -t $(CONTAINER_NAMESPACE)/app:$(CI_COMMIT_REF_SLUG) -f .docker/php/Dockerfile ./src
 	@if test "$(CI_COMMIT_REF_SLUG)" = "$(BRANCH_DEFAULT)"  ; \
 		then docker tag $(CONTAINER_NAMESPACE)/app:$(CI_COMMIT_REF_SLUG) $(CONTAINER_NAMESPACE)/app:latest ; \
 	fi

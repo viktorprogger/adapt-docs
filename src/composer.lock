@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "174b3ada0638b8e07ff0102624606a0e",
+    "content-hash": "5c337a1ed6ac8f8c4691c7fd071f8045",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -536,22 +536,26 @@
         },
         {
             "name": "miolae/yii2-markdown-doc",
-            "version": "2.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/miolae/yii2-markdown-doc.git",
-                "reference": "a4697c3fb3632b2da63e6d045968fb5d67b244f2"
+                "reference": "1806be57b45bbb5e7c9758b6924094c31556d0f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/miolae/yii2-markdown-doc/zipball/a4697c3fb3632b2da63e6d045968fb5d67b244f2",
-                "reference": "a4697c3fb3632b2da63e6d045968fb5d67b244f2",
+                "url": "https://api.github.com/repos/miolae/yii2-markdown-doc/zipball/1806be57b45bbb5e7c9758b6924094c31556d0f3",
+                "reference": "1806be57b45bbb5e7c9758b6924094c31556d0f3",
                 "shasum": ""
             },
             "require": {
                 "kartik-v/yii2-markdown": "*",
                 "php": ">=5.6",
                 "yiisoft/yii2": "~2.0.11"
+            },
+            "require-dev": {
+                "roave/security-advisories": "dev-master",
+                "squizlabs/php_codesniffer": "*"
             },
             "type": "yii2-module",
             "autoload": {
@@ -576,7 +580,7 @@
                 "markdown",
                 "yii2"
             ],
-            "time": "2018-02-20T09:05:20+00:00"
+            "time": "2018-05-22T13:09:03+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -4040,11 +4044,13 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "miolae/yii2-markdown-doc": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.4.0"
+        "php": ">=7.4.0"
     },
     "platform-dev": []
 }
