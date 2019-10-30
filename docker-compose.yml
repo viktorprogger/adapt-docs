@@ -1,0 +1,25 @@
+version: "3"
+services:
+    webserver:
+        image: nginx:alpine
+        restart: unless-stopped
+        volumes:
+            - ./src:/var/www
+            - ./.docker/nginx/conf.d/:/etc/nginx/conf.d/
+        ports:
+            - ${WEB_PORT:-80}:80
+    app:
+        image: registry.gitlab.com/adaptru/docs/app:${BUILD_TAG}
+        user: "${USER_ID:-1000}:${GROUP_ID:-1000}"
+        restart: unless-stopped
+        volumes:
+            - ./.docker/logs:/var/log
+            - ./.docker/php/php.ini:/usr/local/etc/php/conf.d/40-custom.ini:ro
+            - ~/.composer/cache:/root/.composer/cache
+            - ~/.composer/auth.json:/.composer/auth.json:ro
+            - ./src:/var/www
+        environment:
+            TZ: Europe/Moscow
+            XDEBUG_CONFIG: "remote_enable=On remote_host=${HOST_IP}"
+        env_file:
+            - .env
