@@ -113,3 +113,11 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.doc-toc {
+    width: 20%;
+}
+
+.doc-content {
+    width: 78%;
+}

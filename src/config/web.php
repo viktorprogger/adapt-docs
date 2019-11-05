@@ -34,8 +34,8 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName'  => false,
             'rules'           => [
-                '/<page:\w+>' => 'doc/default/index',
-                '/'            => 'doc/default/index',
+                '/<page:[\w\/-]+>' => 'doc/default/index',
+                '/'                => 'doc/default/index',
             ],
         ],
     ],

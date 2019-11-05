@@ -14,6 +14,7 @@ endif
 
 CONTAINER_NAMESPACE := registry.gitlab.com/adaptru/docs
 BRANCH_DEFAULT=master
+HOST_IP := `/sbin/ip route|awk '/docker0/ { print $$9 }'`
 
 .PHONY:
 	up up-test build build-all php db migrator migrate rollback composer require install update help build push publish
@@ -40,7 +41,7 @@ tag: ## Add tags to the app service
 	done
 
 up: ## Bring up docker-compose services in dev mode (code is a volume and DB is not, xdebug is enabled)
-	@BUILD_TAG=$(BUILD_TAG) docker-compose up -d --remove-orphans $(args)
+	@HOST_IP=$(HOST_IP) BUILD_TAG=$(BUILD_TAG) docker-compose up -d --remove-orphans $(args)
 
 up-test: ## Bring up docker-compose services in testing mode (DB and code are NOT volumes, xdebug is disabled)
 	@BUILD_TAG=$(BUILD_TAG) docker-compose -f docker-compose.ci.yml up -d --remove-orphans $(args)
